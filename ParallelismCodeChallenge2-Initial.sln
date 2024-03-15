@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelismCodeChallenge2-Initial", "ParallelismCodeChallenge2-Initial.csproj", "{653BA86E-6ACF-4BD4-A99D-6D05FC22A5CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{653BA86E-6ACF-4BD4-A99D-6D05FC22A5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653BA86E-6ACF-4BD4-A99D-6D05FC22A5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653BA86E-6ACF-4BD4-A99D-6D05FC22A5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653BA86E-6ACF-4BD4-A99D-6D05FC22A5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15E720F5-8897-4F24-A741-3C1EEDBBFFF1}
+	EndGlobalSection
+EndGlobal

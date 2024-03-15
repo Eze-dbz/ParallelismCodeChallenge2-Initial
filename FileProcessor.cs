@@ -17,12 +17,16 @@ namespace ParallelismCodeChallenge2
         private readonly Func<double, double, double> add = (num1, num2) => num1 + num2;
         // Subtract
         // TODO: Create subtract Lambda
+        private readonly Func<double, double, double> subtract = (num1, num2) => num1 - num2;
         // Multiply
         // TODO: Create multiply Lambda
+        private readonly Func<double, double, double> multiply = (num1, num2) => num1 * num2;
         // Divide
         // TODO: Create divide Lambda
+        private readonly Func<double, double, double> divide = (num1, num2) => num1 / num2;
         // Power
         // TODO: Create power Lambda
+        private readonly Func<double, double, double> power = (num1, num2) => Math.Pow(num1, num2);
 
         private double CalculateLineOperation(string line)
         {
@@ -31,7 +35,28 @@ namespace ParallelismCodeChallenge2
             // 2. This method receives the file text line and should identify the operation and perform it, returning the final result
             // 3. Remember to use the lambda functions to complete the arithmetic calculation
 
-            throw new NotImplementedException();
+            var match = Regex.Match(line, PATTERN);
+            string[] numbers;
+            switch (match.Groups[0].Value)
+            {
+                case ADD:
+                    numbers = line.Split(ADD);
+                    return add(Convert.ToDouble(numbers[0]), Convert.ToDouble(numbers[1]));
+                case SUBTRACT:
+                    numbers = line.Split(SUBTRACT);
+                    return subtract(Convert.ToDouble(numbers[0]), Convert.ToDouble(numbers[1]));
+                case MULTIPLY:
+                    numbers = line.Split(MULTIPLY);
+                    return multiply(Convert.ToDouble(numbers[0]), Convert.ToDouble(numbers[1]));
+                case DIVIDE:
+                    numbers = line.Split(DIVIDE);
+                    return divide(Convert.ToDouble(numbers[0]), Convert.ToDouble(numbers[1]));
+                case POWER:
+                    numbers = line.Split(POWER);
+                    return power(Convert.ToDouble(numbers[0]), Convert.ToDouble(numbers[1]));
+                default:
+                    return 0;
+            }
         }
         public async Task ProcessFilesAsync(List<string> filePaths, Func<string, string> lineOperation)
         {
@@ -64,7 +89,10 @@ namespace ParallelismCodeChallenge2
             // https://learn.microsoft.com/en-us/dotnet/api/system.linq.parallelenumerable.asparallel?view=net-6.0
             // https://www.csharptutorial.net/csharp-linq/csharp-asparallel/
 
-            var processedLines = null as ParallelQuery<string>;
+            var processedLines = lines.AsParallel().Select(l => {
+                var exp = $"Expression: {l} --> Result: {CalculateLineOperation(l)}";
+                return lineOperation(exp);
+            });
 
             // Write the processed lines back to the file
             try
